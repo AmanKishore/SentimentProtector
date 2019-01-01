@@ -14,10 +14,11 @@ class ApiClient:
 
         with open(file_name) as json_file:
             json_data = json.load(json_file)
+        print({'documents':[{'text': 'Hello!'}, {'text': 'Boo'}]})
 
         headers = {'Ocp-Apim-Subscription-Key' : self.api_key, 'Accept' : 'application/json', 'Content-Type' : 'application/json'}
 
-        data = requests.post(self.base_url, data=json.dumps(json_data), headers=headers)
+        data = requests.post(self.base_url, data=json.dumps([{'text': 'Hello!'}, {'text': 'Boo'}]), headers=headers)
 
         if(data.ok):
             return data
